@@ -54,7 +54,6 @@ Usage: sdgen gen [options]
 
 Options:
     -g, --cfg <cfg>                Classifier-free guidance value as a float. (default: 7.5, env: SD_CFG)
-    -c, --checkpoint <checkpoint>  Stable Diffusion checkpoint name. If none is passed, the last checkpoint to be loaded will be used. (env: SD_CHECKPOINT)
     -H, --height <height>          Height of the image. (default: 1024, env: SD_HEIGHT)
     -n, --n-prompt <nPrompt>       The negative prompt for the image. (env: SD_N_PROMPT)
     -o, --output <output>          The name of the file where the resulting image will be stored. This MUST end with '.png'. The substring '[HASH]' will be replaced with a hash value for the image. (default: "[HASH].png", env: SD_OUTPUT)

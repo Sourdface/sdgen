@@ -14,14 +14,15 @@ const gen = new Command()
     .default(7.5)
     .argParser(parseFloat)
   )
-  .addOption(
-    new Option(
-      '-c, --checkpoint <checkpoint>',
-      'Stable Diffusion checkpoint name. If none is passed, the last ' +
-      'checkpoint to be loaded will be used.'
-    )
-    .env('SD_CHECKPOINT')
-  )
+  // TODO: Add this back in when it actually does something
+  // .addOption(
+  //   new Option(
+  //     '-c, --checkpoint <checkpoint>',
+  //     'Stable Diffusion checkpoint name. If none is passed, the last ' +
+  //     'checkpoint to be loaded will be used.'
+  //   )
+  //   .env('SD_CHECKPOINT')
+  // )
   .addOption(
     new Option(
       '-H, --height <height>',
@@ -79,7 +80,7 @@ const gen = new Command()
     )
     .env('SD_SEED')
     .default(-1)
-    .argParser((val) => parseInt(val === '' || val == null ? -1 : val))
+    .argParser((val) => parseInt((val === '' || val == null) ? '-1' : val))
   )
   .addOption(
     new Option(
@@ -92,7 +93,7 @@ const gen = new Command()
   )
   .addOption(
     new Option(
-      '-y', '--style <styles...>',
+      '-y, --style <styles...>',
       'One or more styles to apply to the prompt'
     )
     .env('SD_STYLE')
