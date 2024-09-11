@@ -26,6 +26,8 @@ cd -
 
 You must have access to a running instance of [Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) (or compatible API server). You can either run this locally or use an online service; specify the url using `--api-url`, `-u`, or the variable `SD_API_URL`.
 
+Note that you cannot currently set the checkpoint from the command line. (This is planned.) The checkpoint will be the last one loaded by Stable Diffusion WebUI.
+
 ### Base Command
 
 ```txt
