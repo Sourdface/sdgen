@@ -75,7 +75,7 @@ const gen = new Command()
   .addOption(
     new Option(
       '-s, --seed <seed>',
-      'The seed value for the image. If undefgined, -1, or an empty string is ' +
+      'The seed value for the image. If undefined, -1, or an empty string is ' +
       'given, then a random value will be used.'
     )
     .env('SD_SEED')
