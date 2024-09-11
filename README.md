@@ -2,7 +2,7 @@
 
 A simple command line utility for generating images using Stable Diffusion.
 
-Written in Node.js using [Commander](https://www.npmjs.com/package/commander) and [Axios](https://www.npmjs.com/package/axios).
+Written in [Node.js](https://nodejs.org) using [Commander](https://www.npmjs.com/package/commander) and [Axios](https://www.npmjs.com/package/axios).
 
 TypeScript is used only for IDE completion and is not needed to compile or run.
 

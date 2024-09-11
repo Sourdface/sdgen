@@ -7,7 +7,10 @@ const program = new Command()
 program
   .name('sdgen')
   .description(
-    'Perform actions using a Stable Diffusion image generation server.')
+    'Perform actions using a Stable Diffusion image generation server.\n\n' +
+    'Note that most if not all command line options have environment ' +
+    'variable equivalents.'
+  )
   .version('0.0.0')
   .addOption(
     new Option(
