@@ -8,6 +8,8 @@ TypeScript is used only for IDE completion and is not needed to compile or run.
 
 ## Install
 
+Node.js must be available on your PATH.
+
 Clone this repo, run `npm i` from inside, then link `bin/sdgen` to a location in your PATH.
 
 Example:
