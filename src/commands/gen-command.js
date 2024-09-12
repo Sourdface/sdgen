@@ -1,6 +1,7 @@
 import { Command, Option } from "commander"
 
 import genAction from '../actions/gen-action.js'
+import { tryParseInt, tryParseFloat } from "../util.js"
 
 const gen = new Command()
   .command('gen')
@@ -12,7 +13,7 @@ const gen = new Command()
     )
     .env('SD_CFG')
     .default(7.5)
-    .argParser(parseFloat)
+    .argParser(tryParseFloat('Invalid CFG value: {value}'))
   )
   // TODO: Add this back in when it actually does something
   // .addOption(
@@ -30,7 +31,7 @@ const gen = new Command()
     )
     .env('SD_HEIGHT')
     .default(1024)
-    .argParser(parseInt)
+    .argParser(tryParseInt('Invalid height: {value}'))
   )
   .addOption(
     new Option(
@@ -80,7 +81,11 @@ const gen = new Command()
     )
     .env('SD_SEED')
     .default(-1)
-    .argParser((val) => parseInt((val === '' || val == null) ? '-1' : val))
+    .argParser(
+      (val) => tryParseInt('Invalid seed: {value}')(
+        (val === '' || val == null) ? '-1' : val
+      )
+    )
   )
   .addOption(
     new Option(
@@ -89,7 +94,7 @@ const gen = new Command()
     )
     .env('SD_STEPS')
     .default(20)
-    .argParser(parseInt)
+    .argParser(tryParseInt('Invalid number of steps: {value}'))
   )
   .addOption(
     new Option(
@@ -105,7 +110,7 @@ const gen = new Command()
     )
     .env('SD_WIDTH')
     .default(1024)
-    .argParser(parseInt)
+    .argParser(tryParseInt('Invalid width: {value}'))
   )
   .action(genAction)
 
