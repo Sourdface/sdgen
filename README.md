@@ -113,4 +113,4 @@ Options:
 
 ### - Forge Checkpoint Issue
 
-While sdgen generally seems to work with [Stable Diffusion Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge/), Forge's method of setting checkpoint during generatiob appears to be [broken right now](https://github.com/lllyasviel/stable-diffusion-webui-forge/issues/1610), so when using Forge the `-c`, `--sd-model-checkpoint` option will have no effect and you will have to set it a different way.
+While sdgen generally seems to work with [Stable Diffusion Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge/), Forge's method of setting checkpoint during generation appears to be [broken right now](https://github.com/lllyasviel/stable-diffusion-webui-forge/issues/1610), so when using Forge the `-c`, `--sd-model-checkpoint` option will have no effect and you will have to set it a different way.
