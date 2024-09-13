@@ -47,27 +47,29 @@ Options:
     -h, --help           display help for command
 
 Commands:
-    gen [options]        Generate an image.
+    txt2img [options]    Generate an image from a text prompt.
 
     help [command]       display help for command
 ```
 
-### gen
+### txt2img
 
 ```txt
-Usage: sdgen gen [options]
+Usage: sdgen txt2img [options]
 
-  Generate an image.
+  Generate an image from a text prompt.
 
 Options:
-    -g, --cfg <cfg>                Classifier-free guidance value as a float.
-                                   (default: 7.5, env: SD_CFG)
+    -g, --cfg-sclae <cfgScale>     Classifier-free guidance scale value as a
+                                   float.
+                                   (default: 7.5, env: SD_CFG_SCALE)
 
     -H, --height <height>          Height of the image.
                                    (default: 1024, env: SD_HEIGHT)
 
-    -n, --n-prompt <nPrompt>       The negative prompt for the image.
-                                   (env: SD_N_PROMPT)
+    -n, --negative-prompt <negativePrompt>
+                                   The negative prompt for the image.
+                                   (env: SD_NEGATIVE_PROMPT)
 
     -o, --output <output>          The name of the file where the resulting
                                    image will be stored. This MUST end with
@@ -78,8 +80,9 @@ Options:
     -p, --prompt <prompt>          The positive prompt for the image.
                                    (env: SD_PROMPT)
 
-    -m, --sampler <sampler>        Name of the sampler to use.
-                                   (default: "Euler", env: SD_SAMPLER)
+    -m, --sampler-name <samplerName>
+                                   Name of the sampler to use.
+                                   (default: "Euler", env: SD_SAMPLER_NAME)
 
     -e, --scheduler <scheduler>    Name of the scheduler to use.
                                    (default: "Simple", env: SD_SCHEDULER)
@@ -92,8 +95,9 @@ Options:
     -t, --steps <steps>            Number of generation steps.
                                    (default: 20, env: SD_STEPS)
 
-    -y, --style <styles...>        One or more styles to apply to the prompt
-                                   (env: SD_STYLE)
+    -y, --styles <styles>          Comma-separated list of one or more styles
+                                   to apply to the prompt
+                                   (env: SD_STYLEs)
 
     -W, --width <width>            Width of the image.
                                    (default: 1024, env: SD_WIDTH)
