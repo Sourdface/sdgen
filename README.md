@@ -69,7 +69,7 @@ Options:
 
     -n, --negative-prompt <negativePrompt>
                                    The negative prompt for the image.
-                                   (env: SD_NEGATIVE_PROMPT)
+                                   (default: "", env: SD_NEGATIVE_PROMPT)
 
     -o, --output <output>          The name of the file where the resulting
                                    image will be stored. This MUST end with
@@ -78,7 +78,7 @@ Options:
                                    (default: "[HASH].png", env: SD_OUTPUT)
 
     -p, --prompt <prompt>          The positive prompt for the image.
-                                   (env: SD_PROMPT)
+                                   (default: "", env: SD_PROMPT)
 
     -m, --sampler-name <samplerName>
                                    Name of the sampler to use.
@@ -96,14 +96,14 @@ Options:
                                    Stable Diffusion checkpoint name. If none is
                                    passed, the last checkpoint to be loaded
                                    will be used.
-                                   (default: '', env: SD_SD_MODEL_CHECKPOINT)
+                                   (default: "", env: SD_SD_MODEL_CHECKPOINT)
 
     -t, --steps <steps>            Number of generation steps.
                                    (default: 20, env: SD_STEPS)
 
     -y, --styles <styles>          Comma-separated list of one or more styles
                                    to apply to the prompt
-                                   (env: SD_STYLES)
+                                   (default: "", env: SD_STYLES)
 
     -W, --width <width>            Width of the image.
                                    (default: 1024, env: SD_WIDTH)
@@ -115,4 +115,4 @@ Options:
 
 ### - Forge Checkpoint Issue
 
-While sdgen generally seems to work with [Stable Diffusion Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge/), Froge's method of setting checkpoint during generatiob appears to be [broken right now](https://github.com/lllyasviel/stable-diffusion-webui-forge/issues/1610), so when using Forge the `-c`, `--sd-model-checkpoint` option will have no effect and you will have to set it a different way.
+While sdgen generally seems to work with [Stable Diffusion Forge](https://github.com/lllyasviel/stable-diffusion-webui-forge/), Forge's method of setting checkpoint during generatiob appears to be [broken right now](https://github.com/lllyasviel/stable-diffusion-webui-forge/issues/1610), so when using Forge the `-c`, `--sd-model-checkpoint` option will have no effect and you will have to set it a different way.
