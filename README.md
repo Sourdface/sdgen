@@ -97,7 +97,7 @@ Options:
 
     -y, --styles <styles>          Comma-separated list of one or more styles
                                    to apply to the prompt
-                                   (env: SD_STYLEs)
+                                   (env: SD_STYLES)
 
     -W, --width <width>            Width of the image.
                                    (default: 1024, env: SD_WIDTH)
