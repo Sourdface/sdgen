@@ -1,6 +1,6 @@
 import { Command, Option } from 'commander'
 
-import genCommand from './commands/gen-command.js'
+import txt2imgCommand from './commands/txt2img-command.js'
 
 const program = new Command()
 
@@ -20,6 +20,6 @@ program
     .env('SD_API_URL')
     .default('http://localhost:7860')
   )
-  .addCommand(genCommand)
+  .addCommand(txt2imgCommand)
 
 await program.parseAsync(process.argv)

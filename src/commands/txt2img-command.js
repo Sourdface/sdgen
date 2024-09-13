@@ -3,17 +3,17 @@ import { Command, Option } from "commander"
 import genAction from '../actions/gen-action.js'
 import { tryParseInt, tryParseFloat } from "../util.js"
 
-const gen = new Command()
-  .command('gen')
-  .description('Generate an image.')
+const txt2img = new Command()
+  .command('txt2img')
+  .description('Generate an image from a text prompt.')
   .addOption(
     new Option(
-      '-g, --cfg <cfg>',
-      'Classifier-free guidance value as a float.'
+      '-g, --cfg-scale <cfgScale>',
+      'Classifier-free guidance scale value as a float.'
     )
-    .env('SD_CFG')
+    .env('SD_CFG_SCALE')
     .default(7.5)
-    .argParser(tryParseFloat('Invalid CFG value: {value}'))
+    .argParser(tryParseFloat('Invalid CFG scale value: {value}'))
   )
   // TODO: Add this back in when it actually does something
   // .addOption(
@@ -35,10 +35,10 @@ const gen = new Command()
   )
   .addOption(
     new Option(
-      '-n, --n-prompt <nPrompt>',
+      '-n, --negative-prompt <negativePrompt>',
       'The negative prompt for the image.'
     )
-    .env('SD_N_PROMPT')
+    .env('SD_NEGATIVE_PROMPT')
   )
   .addOption(
     new Option(
@@ -59,10 +59,10 @@ const gen = new Command()
   )
   .addOption(
     new Option(
-      '-m, --sampler <sampler>',
+      '-m, --sampler-name <sampler_name>',
       'Name of the sampler to use.'
     )
-    .env('SD_SAMPLER')
+    .env('SD_SAMPLER_NAME')
     .default('Euler')
   )
   .addOption(
@@ -98,10 +98,10 @@ const gen = new Command()
   )
   .addOption(
     new Option(
-      '-y, --style <styles...>',
-      'One or more styles to apply to the prompt'
+      '-y, --styles <styles>',
+      'Comma-seperated list of one or more styles to apply to the prompt'
     )
-    .env('SD_STYLE')
+    .env('SD_STYLES')
   )
   .addOption(
     new Option(
@@ -114,4 +114,4 @@ const gen = new Command()
   )
   .action(genAction)
 
-export default gen
+export default txt2img

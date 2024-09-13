@@ -5,17 +5,17 @@ import { createHash } from 'node:crypto'
 
 /**
  * @param {object} opts
- * @param {number} opts.cfg
+ * @param {number} opts.cfgScale
  * @param {string} opts.checkpoint
  * @param {number} opts.height
- * @param {number} opts.nPrompt
+ * @param {number} opts.negativePrompt
  * @param {string} opts.output
  * @param {string} opts.prompt
- * @param {string} opts.sampler
+ * @param {string} opts.samplerName
  * @param {string} opts.scheduler
  * @param {number} opts.seed
  * @param {number} opts.steps
- * @param {string[]} opts.style
+ * @param {string} opts.styles
  * @param {number} opts.width
  * @param {import('commander').Command} command
  */
@@ -26,15 +26,15 @@ export default async function genAction(opts, command) {
   console.log('Generation options: ', opts)
   console.log('Generating...')
   const result = await Axios.post(url, {
-    cfg_scale: opts.cfg,
+    cfg_scale: opts.cfgScale,
     height: opts.height,
-    negative_prompt: opts.nPrompt,
+    negative_prompt: opts.negativePrompt,
     prompt: opts.prompt,
-    sampler_name: opts.sampler,
+    sampler_name: opts.samplerName,
     scheduler: opts.scheduler,
     seed: opts.seed,
     steps: opts.steps,
-    styles: opts.style,
+    styles: opts.styles.split(',').map((s) => s.trim()),
     width: opts.width
   })
   console.log('Generation complete.')
