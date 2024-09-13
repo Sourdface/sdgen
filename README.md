@@ -60,7 +60,7 @@ Usage: sdgen txt2img [options]
   Generate an image from a text prompt.
 
 Options:
-    -g, --cfg-sclae <cfgScale>     Classifier-free guidance scale value as a
+    -g, --cfg-scale <cfgScale>     Classifier-free guidance scale value as a
                                    float.
                                    (default: 7.5, env: SD_CFG_SCALE)
 
