@@ -16,15 +16,6 @@ const txt2img = new Command()
     .default(7.5)
     .argParser(tryParseFloat('Invalid CFG scale value: {value}'))
   )
-  // TODO: Add this back in when it actually does something
-  // .addOption(
-  //   new Option(
-  //     '-c, --checkpoint <checkpoint>',
-  //     'Stable Diffusion checkpoint name. If none is passed, the last ' +
-  //     'checkpoint to be loaded will be used.'
-  //   )
-  //   .env('SD_CHECKPOINT')
-  // )
   .addOption(
     new Option(
       '-H, --height <height>',
@@ -40,6 +31,7 @@ const txt2img = new Command()
       'The negative prompt for the image.'
     )
     .env('SD_NEGATIVE_PROMPT')
+    .default('')
   )
   .addOption(
     new Option(
@@ -57,6 +49,7 @@ const txt2img = new Command()
       'The positive prompt for the image.',
     )
     .env('SD_PROMPT')
+    .default('')
   )
   .addOption(
     new Option(
@@ -90,6 +83,14 @@ const txt2img = new Command()
   )
   .addOption(
     new Option(
+      '-c, --sd-model-checkpoint <sdModelCheckpoint>',
+      'Stable Diffusion checkpoint name. If none is passed, the last ' +
+      'checkpoint to be loaded will be used.'
+    )
+    .env('SD_SD_MODEL_CHECKPOINT')
+  )
+  .addOption(
+    new Option(
       '-t, --steps <steps>',
       'Number of generation steps.',
     )
@@ -103,6 +104,7 @@ const txt2img = new Command()
       'Comma-seperated list of one or more styles to apply to the prompt'
     )
     .env('SD_STYLES')
+    .default('')
   )
   .addOption(
     new Option(

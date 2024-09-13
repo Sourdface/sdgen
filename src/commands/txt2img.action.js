@@ -6,13 +6,13 @@ import { createHash } from 'node:crypto'
 /**
  * @param {object} opts
  * @param {number} opts.cfgScale
- * @param {string} opts.checkpoint
  * @param {number} opts.height
  * @param {number} opts.negativePrompt
  * @param {string} opts.output
  * @param {string} opts.prompt
  * @param {string} opts.samplerName
  * @param {string} opts.scheduler
+ * @param {string} opts.sdModelCheckpoint
  * @param {number} opts.seed
  * @param {number} opts.steps
  * @param {string} opts.styles
@@ -23,9 +23,8 @@ export default async function genAction(opts, command) {
   const apiUrl = /** @type {Command} */ (command.parent).opts().apiUrl
   const url = `${apiUrl}/sdapi/v1/txt2img`
   console.log('Stable Diffusion URL: ' + url)
-  console.log('Generation options: ', opts)
-  console.log('Generating...')
-  const result = await Axios.post(url, {
+  /** @type Record<string, any> */
+  const params = {
     cfg_scale: opts.cfgScale,
     height: opts.height,
     negative_prompt: opts.negativePrompt,
@@ -34,9 +33,18 @@ export default async function genAction(opts, command) {
     scheduler: opts.scheduler,
     seed: opts.seed,
     steps: opts.steps,
-    styles: opts.styles.split(',').map((s) => s.trim()),
+    styles: opts.styles ? opts.styles.split(',').map((s) => s.trim()) : [],
     width: opts.width
-  })
+  }
+  if (opts.sdModelCheckpoint) {
+    params.override_settings = {
+      sd_model_checkpoint: opts.sdModelCheckpoint
+    }
+    params.override_settings_restore_afterwards = false
+  }
+  console.log('Request params: ', params)
+  console.log('Generating...')
+  const result = await Axios.post(url, params)
   console.log('Generation complete.')
   const img = Buffer.from(result.data.images[0], 'base64')
   const hash = createHash('sha256')
