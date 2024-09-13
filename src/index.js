@@ -1,6 +1,6 @@
 import { Command, Option } from 'commander'
 
-import txt2imgCommand from './commands/txt2img-command.js'
+import txt2imgCommand from './commands/txt2img.command.js'
 
 const program = new Command()
 

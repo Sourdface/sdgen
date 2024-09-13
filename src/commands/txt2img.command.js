@@ -1,11 +1,12 @@
 import { Command, Option } from "commander"
 
-import genAction from '../actions/gen-action.js'
+import txt2imgAction from './txt2img.action.js'
 import { tryParseInt, tryParseFloat } from "../util.js"
 
 const txt2img = new Command()
   .command('txt2img')
   .description('Generate an image from a text prompt.')
+  .action(txt2imgAction)
   .addOption(
     new Option(
       '-g, --cfg-scale <cfgScale>',
@@ -59,7 +60,7 @@ const txt2img = new Command()
   )
   .addOption(
     new Option(
-      '-m, --sampler-name <sampler_name>',
+      '-m, --sampler-name <samplerName>',
       'Name of the sampler to use.'
     )
     .env('SD_SAMPLER_NAME')
@@ -112,6 +113,5 @@ const txt2img = new Command()
     .default(1024)
     .argParser(tryParseInt('Invalid width: {value}'))
   )
-  .action(genAction)
 
 export default txt2img
